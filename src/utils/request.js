@@ -1,19 +1,22 @@
 import axios from 'axios';
 import router from '../router';
 
-const baseUrl = 'https://tkiddo-8gkkh0chf3632274-1256164626.ap-shanghai.app.tcloudbase.com/api';
+const baseUrl = 'http://localhost:3000/api';
 
 const request = (params) => {
-  const { method, url, data } = params;
-  const headers = {
-    token: localStorage.getItem('token') || null
+  const { method, url, data, headers } = params;
+  let newHeaders = {
+    token: localStorage.getItem('token')
   };
+  if (headers) {
+    newHeaders = { ...newHeaders, ...headers };
+  }
   return new Promise((resolve, reject) => {
     axios({
       url: `${baseUrl}${url}`,
       method,
       data,
-      headers
+      headers: newHeaders
     })
       .then((res) => {
         resolve(res.data);

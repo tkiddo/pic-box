@@ -15,3 +15,14 @@ export const login = (data) => {
     data
   });
 };
+
+export const upload = (data) => {
+  return request({
+    url: '/upload',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    },
+    data
+  });
+};
