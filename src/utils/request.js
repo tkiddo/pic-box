@@ -19,7 +19,14 @@ const request = (params) => {
       headers: newHeaders
     })
       .then((res) => {
-        resolve(res.data);
+        if (res.success) {
+          resolve(res.data);
+        } else {
+          reject({
+            code: -1,
+            msg: res.msg
+          });
+        }
       })
       .catch((err) => {
         const {
