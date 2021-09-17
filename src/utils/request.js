@@ -19,8 +19,9 @@ const request = (params) => {
       headers: newHeaders
     })
       .then((res) => {
-        if (res.success) {
-          resolve(res.data);
+        const { data } = res;
+        if (data.success) {
+          resolve(data.data);
         } else {
           reject({
             code: -1,

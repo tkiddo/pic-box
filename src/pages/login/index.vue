@@ -41,8 +41,9 @@ export default {
           password: this.password
         })
         .then((res) => {
-          const { token } = res;
+          const { token, ...userInfo } = res;
           localStorage.setItem('token', token);
+          localStorage.setItem('userInfo', JSON.stringify(userInfo));
           this.$router.push('/home');
         });
     }

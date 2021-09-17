@@ -1,28 +1,20 @@
 <template>
-  <div>
-    <h3>Pic Box</h3>
-    <div>
-      <input placeholder="标签" v-model="label" />
-    </div>
-    <div>
-      <input type="file" @change="handleChange" />
-      <button @click="handleUpload">上传</button>
-    </div>
-    <div class="img-list">
-      <div v-for="item in pictures" :key="item._id" class="img-container">
-        <img :src="item.tempFileURL" class="img" />
-      </div>
-    </div>
-  </div>
+  <n-layout class="page-home">
+    <n-layout-header class="header" bordered>
+      <span>{{ username }}</span>
+    </n-layout-header>
+  </n-layout>
 </template>
 
 <script>
 export default {
   data() {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
     return {
       pictures: [],
       file: null,
-      label: ''
+      label: '',
+      username: userInfo.username || ''
     };
   },
   mounted() {
@@ -31,7 +23,7 @@ export default {
   methods: {
     getPictures() {
       this.$api.getPictures().then((res) => {
-        this.pictures = res.data;
+        this.pictures = res.items;
       });
     },
     handleChange(e) {
@@ -55,17 +47,13 @@ export default {
 };
 </script>
 
-<style scoped>
-.img-list {
-  display: flex;
-}
-
-.img-container {
-  width: 200px;
-  margin: 10px;
-}
-
-.img {
-  max-width: 100%;
+<style lang="less" scoped>
+.page-home {
+  .header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+  }
 }
 </style>
