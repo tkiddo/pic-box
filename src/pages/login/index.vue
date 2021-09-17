@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-login">
     <div>登录</div>
     <div>
       <input placeholder="username" v-model="username" />
@@ -7,12 +7,16 @@
     <div>
       <input placeholder="password" type="password" v-model="password" />
     </div>
-    <button @click="login">登录</button>
+    <n-button @click="login">登录</n-button>
   </div>
 </template>
 
 <script>
+import { NButton } from 'naive-ui';
 export default {
+  components: {
+    NButton
+  },
   data() {
     return {
       username: '',
@@ -35,3 +39,9 @@ export default {
   }
 };
 </script>
+
+<style lang="less" scoped>
+.page-login {
+  width: 100%;
+}
+</style>
