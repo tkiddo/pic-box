@@ -1,0 +1,22 @@
+<template>
+  <router-view></router-view>
+</template>
+
+<script>
+import { useMessage } from 'naive-ui';
+export default {
+  name: 'App',
+  setup() {
+    window.$message = useMessage();
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+</style>

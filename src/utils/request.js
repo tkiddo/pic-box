@@ -23,9 +23,10 @@ const request = (params) => {
         if (data.success) {
           resolve(data.data);
         } else {
+          window.$message.error(data.msg);
           reject({
             code: -1,
-            msg: res.msg
+            msg: data.msg
           });
         }
       })

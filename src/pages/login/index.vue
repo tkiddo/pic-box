@@ -44,8 +44,9 @@ export default {
           const { token, ...userInfo } = res;
           localStorage.setItem('token', token);
           localStorage.setItem('userInfo', JSON.stringify(userInfo));
-          this.$router.push('/home');
-        });
+          this.$router.replace('/index/home');
+        })
+        .catch(() => {});
     }
   }
 };
