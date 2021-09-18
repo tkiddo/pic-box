@@ -1,8 +1,9 @@
 <template>
   <n-layout class="index">
     <n-layout-header class="header" bordered>
+      <n-button size="tiny" type="primary">上传</n-button>
       <n-popselect :options="options" v-model:value="value" @update:value="handleClick">
-        <n-button text>{{ username }}</n-button>
+        <n-button text>欢迎，{{ username }}</n-button>
       </n-popselect>
     </n-layout-header>
     <n-layout-content>
@@ -69,7 +70,7 @@ export default {
 .index {
   .header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
   }
